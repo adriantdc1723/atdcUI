@@ -1,0 +1,100 @@
+//Theme Colors
+$themes: (
+    "light":(
+        "background-color": #f0f2f5,
+        "color": (
+            "primary": #050505,
+            "secondary": #444444,
+            "mute": #828282
+        ),
+        "element":(
+            "background-color": #ffffff,
+            "highlight-05": #e7ebf2,
+            "highlight-10": #dde1ec,
+            "highlight-15": #d1d7e5,
+            "highlight-20": #b9c3d8
+        )
+    ),
+    "dark":(
+        "background-color": #21252b,
+        "color": (
+            "primary": #ffffff,
+            "secondary": #bfbfbf,
+            "mute": #7f7f7f
+        ),
+        "element":(
+            "background-color": #2c3036,
+            "highlight-05": #373b40,
+            "highlight-10": #42454a,
+            "highlight-15": #4b4f54,
+            "highlight-20": #56595e
+        )
+    )
+);
+
+//Colors
+$colors: (
+    "primary":(
+        "hue": #3e7bfa, 
+        "tint": #5288fb, 
+        "tone": #457cee,
+        "shade": #386ee1,
+        "die": #5b8ffb
+    ),
+    "secondary":(
+        "hue": #555770, 
+        "tint": #66687f, 
+        "tone": #595b72,
+        "shade": #4c4e65,
+        "die": #6e7085
+    ),
+    "dark":(
+        "hue": #2d3035, 
+        "tint": #42454a, 
+        "tone": #35383d,
+        "shade": #282b30,
+        "die": #4c4f53
+    ),
+    "guava":(
+        "hue": #06c270, 
+        "tint": #1fc87f, 
+        "tone": #12bb72,
+        "shade": #05ae65,
+        "die": #2bcb85
+    ),
+    "apple":(
+        "hue": #ff3b3b, 
+        "tint": #ff4f4f, 
+        "tone": #f24242,
+        "shade": #e53535,
+        "die": #ff5858
+    ),
+    "mango":(
+        "hue": #ffac13, 
+        "tint": #ffb42b, 
+        "tone": #f2a81e,
+        "shade": #e59a11,
+        "die": #ffb836
+    )
+);
+
+//html entity
+$html-entity: (
+    "arrow": '\276f',
+    "tribars": '\2630',
+    "times": '\2716'
+);
+
+//breakpoints in max-width
+$breakpoints: (
+    "lg": 992,
+    "md": 768,
+    "sm": 576
+);
+
+
+//shadows
+$shadows-1: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+$shadows-2: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+$shadows-3: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
+$shadows-4: rgba(0, 0, 0, 0.24) 0px 3px 8px;

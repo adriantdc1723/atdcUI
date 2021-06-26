@@ -1,0 +1,520 @@
+@use 'var.scss';
+
+//body theme base
+body{
+    background-color: map-get(var.$themes, "light", "background-color");
+    color: map-get(var.$themes, "light", "color", "primary");
+}
+
+.--theme-dark{
+    background-color: map-get(var.$themes, "dark", "background-color");
+    color: map-get(var.$themes, "dark", "color", "primary");
+}
+
+
+
+
+
+
+
+
+
+
+//global start
+%anchor-format{
+    color: map-get(var.$colors, "primary", "hue");
+}
+
+%anchor-unstyled{
+    text-decoration: none;
+    color: inherit;
+}
+
+a{
+    @extend %anchor-format;
+}
+//global end
+
+
+
+
+
+
+
+
+
+
+//a-nav start
+.a-nav{
+    position: fixed; top:0; right: 0; left: 0;
+    background-color: map-get(var.$themes, "light", "element", "background-color");
+    height: 3.5rem; //48px
+    box-sizing: border-box;
+    z-index: 1  ;
+}
+
+//direct element 1
+.a-nav__logo{
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    //border:1px dashed red;
+    height: 100%;
+    padding: .5rem;
+}
+
+.a-nav__logo-link{
+    display: block;
+    box-sizing: border-box;
+   // background-color: red;
+    height: 100%;
+    font-size: 1.5rem;
+}
+
+.a-nav__logo-image{
+    height: 100%;
+}
+
+//direct element 2
+.a-nav__menu{
+    list-style-type: none;
+
+    position: absolute;
+    box-sizing: border-box;
+    display: inline-block;
+    //border:1px dashed red;
+    height: 100%;
+    padding-right: .5rem; padding-left: .5rem;
+    transition: right 0.2s ease-in-out;
+}
+
+%a-nav__menu-item-format{
+    position: relative;
+    //border: 1px solid red;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+
+.a-nav__menu-item{
+    @extend %a-nav__menu-item-format;
+}
+
+%item-link-text-format{
+    text-decoration: none;
+    position: relative;
+    color: inherit;
+    padding-top:1rem; padding-right: .5rem; padding-bottom: 1rem; padding-left: .5rem;
+    //background-color: green;
+    height: 100%; display: block;  
+    box-sizing: border-box;
+    min-width: 6rem;
+    text-align: center;
+   
+}
+
+%item-link-text-format:hover{
+    background-color: map-get(var.$themes, "light", "element", "highlight-05");
+}
+
+.a-nav__menu-item-link{
+    @extend %item-link-text-format;
+}
+
+.a-nav__menu-item-expand{
+    @extend %a-nav__menu-item-format;
+}
+
+.a-nav__menu-item-text{
+    @extend %item-link-text-format;
+    padding-right: 1.5rem;
+}
+
+.a-nav__menu-item-text::after{
+    display: inline-block;
+    //background-color: red;
+    position: absolute; right: .5rem;
+    content: map-get(var.$html-entity,"arrow");
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in-out;
+}
+
+.a-nav__menu-item-sub-menu{
+    display: block; position: absolute; right: 0;
+    background-color: map-get(var.$themes, "light", "element", "background-color");
+    box-shadow: var.$shadows-2;
+    border-radius: .5rem;
+    overflow: hidden;
+    width: 300px;
+    display: none;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+.a-nav__menu-item-expand.expanded .a-nav__menu-item-text{
+    background-color: map-get(var.$themes, "light", "element", "highlight-10");
+}
+
+.a-nav__menu-item-expand.expanded .a-nav__menu-item-sub-menu{
+    display: block;
+}
+
+.a-nav__menu-item-expand.expanded .a-nav__menu-item-text::after{
+    transform: rotate(270deg);
+}
+
+
+//direct element 3
+.a-nav__menu-button{
+    background-color: red;
+    float: right;
+    height: 3.5rem;  width: 3.5rem;
+    box-sizing: border-box;
+    padding: .5rem;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    font-size: 1.2rem;
+    color: inherit;
+    display: none;
+}
+
+.button_bar-1, .button_bar-2, .button_bar-3{
+    display: block;
+    width: 32px; height: 4px;
+    background-color: map-get(var.$themes, "light", "color", "primary" );
+    margin: 6px auto;
+    transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+}
+
+/*.a-nav__menu-button::before{
+   content: map-get(var.$html-entity, "tribars"  );
+   display: block;
+   transition: all 0.2s ease-in-out; 
+}*/
+
+.a-nav__menu-button:hover{
+   background-color: map-get(var.$themes, "light", "element", "highlight-05");
+}
+
+//media query modifier
+ 
+@each $breakpoint, $width in var.$breakpoints{
+
+    @media screen and (max-width: #{$width}px){
+
+        .a-nav--collapse-#{$breakpoint} .a-nav__menu{
+            position: fixed; top:3.5rem; right: -300px; bottom: 0;
+            // /border: 1px dashed red;
+            padding:0;
+            overflow-y: auto;
+            width: 300px; height: unset;
+            background-color: inherit;
+
+        }
+
+        .a-nav--collapse-#{$breakpoint} %a-nav__menu-item-format{
+            height: unset;
+            float: none;
+        }
+    
+        .a-nav--collapse-#{$breakpoint} %a-nav__menu-item-format{
+            height: unset;
+            float: none;
+        }
+    
+        .a-nav--collapse-#{$breakpoint} .a-nav__menu-item-sub-menu{
+            position: relative; right: unset;
+            box-shadow: none;
+            background-color: map-get(var.$themes, "light", "element", "highlight-05" );
+            border-radius: unset;
+        }
+    
+        .a-nav--collapse-#{$breakpoint} .a-nav__menu-button{
+            display: block;
+        }
+    
+        //modifier for collapse menu
+        .a-nav--collapse-#{$breakpoint}.show-menu .a-nav__menu{
+            right: 0;
+        }
+    
+        .a-nav--collapse-#{$breakpoint}.show-menu .button_bar-1{
+           //opacity: 0;
+            transform: rotate(45deg) translate(8px,6px);
+        }
+
+        .a-nav--collapse-#{$breakpoint}.show-menu .button_bar-2{
+            opacity: 0;
+        }
+
+        .a-nav--collapse-#{$breakpoint}.show-menu .button_bar-3{
+            //opacity: 0;
+            transform: rotate(-45deg) translate(8px,-6px);
+        }
+    
+        //dark theme
+        .--theme-dark .a-nav--collapse-#{$breakpoint} .a-nav__menu-item-sub-menu{
+            background-color: map-get(var.$themes, "dark", "element", "highlight-05" );
+        }
+
+    
+    }
+}
+
+
+
+
+//a-nav dark theme
+
+.--theme-dark .a-nav{
+    background-color: map-get(var.$themes, "dark", "element", "background-color");
+}
+.--theme-dark %item-link-text-format:hover{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-05");
+}
+
+.--theme-dark .a-nav__menu-item-sub-menu{
+    background-color: map-get(var.$themes, "dark", "element", "background-color");
+}
+
+.--theme-dark .a-nav__menu-button:hover{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-05");
+ }
+
+ .--theme-dark .a-nav__menu-item-expand.expanded .a-nav__menu-item-text{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-10");
+}
+
+.--theme-dark .button_bar-1,  .--theme-dark .button_bar-2,  .--theme-dark .button_bar-3{
+    background-color: map-get(var.$themes, "dark", "color", "primary" );
+}
+ 
+
+//a-nav end
+
+
+
+
+
+
+
+
+
+
+//a-btn start
+%a-btn-default{
+    border-radius: .5rem;
+    height: 2rem;
+    padding: 0 1rem;
+    font-size: 1rem;
+    border: none;
+    min-width: 6rem;
+    cursor: pointer;
+}
+
+%a-btn-default:focus{
+    background-color: #e4e4e4;
+    box-shadow: rgba(#efefef, .25) 0px 1px 4px, rgb(#efefef, .25) 0px 0px 0px 3px;
+}
+
+%a-btn-default:hover{
+    background-color:  #f1f1f1;
+}
+
+%a-btn-default:disabled{
+    background-color:  #f1f1f1;
+    cursor: no-drop;
+}
+
+%a-btn-default.active{
+    background-color:  #d7d7d7;
+}
+
+.a-btn{
+    @extend %a-btn-default;
+}
+
+
+//mofiers
+@each $color, $key in var.$colors{
+    .a-btn--#{$color}{
+        background-color: map-get($key, "hue");
+        color: white;
+    }
+
+    .a-btn--#{$color}:hover{
+        background-color: map-get($key, "tint");
+    }
+
+    .a-btn--#{$color}:focus{
+        background-color:map-get($key, "tone");
+        box-shadow: rgba(map-get($key, "hue"), .25) 0px 1px 4px, rgb(map-get($key, "hue"), .25) 0px 0px 0px 3px;
+    }
+    .a-btn--#{$color}:disabled{
+        background-color:map-get($key, "die");
+    }
+    .a-btn--#{$color}.active{
+        background-color:map-get($key, "shade");
+    }
+}
+
+.a-btn--big{
+    height: 3rem;
+    font-size: 1.2rem;
+}
+
+.a-btn--block{
+    display: block;
+    width: 100%;
+}
+//a-btn end
+
+
+
+
+
+
+
+
+
+
+//a-alert start
+//container
+.a-alert-container{
+    position: fixed; bottom: 0;
+    width: 350px;
+    box-sizing: border-box;
+    padding: .5rem;
+    //border: 1px dashed red;
+    z-index: 999;
+}
+
+
+.a-alert{
+    position: relative;
+    background-color: map-get(var.$themes, "light", "element", "background-color" );
+    border-top-right-radius: .5rem; border-bottom-right-radius: .5rem;
+    border-left: .5rem solid map-get(var.$themes, "light", "element", "highlight-20");
+    box-sizing: border-box; box-shadow: var.$shadows-2;
+    margin: .5rem 0;
+}
+
+.a-alert__header{
+    //border: 1px dashed red;
+    text-align: end;
+    padding: .2rem;
+    border-bottom: 1px solid map-get(var.$themes, "light", "element", "highlight-05" );
+}
+
+.a-alert__close-btn{
+    background-color: map-get(var.$themes, "light", "element", "highlight-05");
+    color: map-get(var.$themes, "light", "color", "mute");
+    width: 25px; height: 25px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.a-alert__close-btn::before{
+    content: map-get(var.$html-entity, "times");
+}
+
+.a-alert__close-btn:hover{
+    background-color: map-get(var.$themes, "light", "element", "highlight-10");
+}
+
+.a-alert__body{
+    position: relative;
+    padding: .5rem;
+    //border: 1px solid red;
+}
+
+.a-alert__title{
+    display: block;
+    //background-color: red;
+    font-size: 1.3rem; font-weight: bold;
+    color: inherit;
+}
+
+.a-alert__message{
+    display: block;
+    // /text-align: center;
+    //background-color: red;
+    color: map-get(var.$themes, "light", "color", "secondary" );
+}
+
+//modifiers
+.a-alert--success{
+    border-left: .5rem solid map-get(var.$colors, "guava", "hue");
+}
+
+.a-alert--success .a-alert__title{
+    color: map-get(var.$colors, "guava", "hue");
+}
+
+.a-alert--danger{
+    border-left: .5rem solid map-get(var.$colors, "apple", "hue");
+}
+
+.a-alert--danger .a-alert__title{
+    color: map-get(var.$colors, "apple", "hue");
+}
+
+.a-alert--warning{
+    border-left: .5rem solid map-get(var.$colors, "mango", "hue");
+}
+
+.a-alert--warning .a-alert__title{
+    color: map-get(var.$colors, "mango", "hue");
+}
+
+
+
+//dark theme
+.--theme-dark .a-alert{
+    background-color: map-get(var.$themes, "dark", "element", "background-color" );
+    border-left: .5rem solid map-get(var.$themes, "dark", "element", "highlight-20");
+}
+
+.--theme-dark .a-alert__header{
+    //border: 1px dashed red;
+    text-align: end;
+    padding: .2rem;
+    border-bottom: 1px solid map-get(var.$themes, "dark", "element", "highlight-05" );
+}
+
+.--theme-dark .a-alert__close-btn{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-05");
+    color: map-get(var.$themes, "dark", "color", "mute");
+}
+
+.--theme-dark .a-alert__message{
+    display: block;
+    //background-color: red;
+    color: map-get(var.$themes, "dark", "color", "secondary" );
+}
+
+.--theme-dark .a-alert__close-btn:hover{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-10");
+}
+
+.--theme-dark .a-alert--success{
+    border-left: .5rem solid map-get(var.$colors, "guava", "hue");
+}
+
+.--theme-dark .a-alert--danger{
+    border-left: .5rem solid map-get(var.$colors, "apple", "hue");
+}
+
+.--theme-dark .a-alert--warning{
+    border-left: .5rem solid map-get(var.$colors, "mango", "hue");
+}
+
+
+
+//a-alert end
+
+
+

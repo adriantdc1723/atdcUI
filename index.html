@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/atdc.css">
+    <title>ATDC</title>
+    
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body, html{
+            height: 100%;
+            font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .container{
+            position: relative;
+            box-sizing: border-box;
+            padding: 5rem;
+            border-right: 1px dashed gray;
+            border-bottom: 1px dashed gray;
+            border-left: 1px dashed gray;
+        }
+
+        #themeSwitch{
+            position: fixed; bottom: 0; right: 0;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="">
+    <!--<div class="a-alert-container">
+        <div class="a-alert a-alert--success">
+            <div class="a-alert__header">
+                <button class="a-alert__close-btn">
+
+                </button>
+            </div>
+            <div class="a-alert__body">
+                <span class="a-alert__title">
+                    Alert!
+                </span>
+                <span class="a-alert__message">
+                    Registration success!
+                </span>
+            </div>
+        </div>
+    </div>-->
+    <button id="themeSwitch" class="a-btn a-btn--dark a-btn--big">Switch theme</button>
+
+    <div style="margin-top: 100px;">
+        <button class="btntest a-btn a-btn--dark" >default</button>
+        <button class="btntest a-btn a-btn--guava" ">success</button>
+        <button class="btntest a-btn a-btn--apple" ">danger</button>
+        <button class="btntest a-btn a-btn--mango" ">warning</button>
+    </div>
+
+    <div class="a-nav a-nav--collapse-md">
+        <div class="a-nav__logo">
+            <a href="" class="a-nav__logo-link">
+                <img src="assets/atdc_lab_logo.png" alt="" class="a-nav__logo-image">
+            </a>
+        </div>
+        <ul class="a-nav__menu">
+            <li class="a-nav__menu-item">
+                <a href="#" class="a-nav__menu-item-link">HOME</a>
+            </li>
+            <li class="a-nav__menu-item">
+                <a href="#" class="a-nav__menu-item-link">LINK 2</a>
+            </li>
+            <li class="a-nav__menu-item-expand">
+                <span class="a-nav__menu-item-text">Expand 2</span>
+                <span class="a-nav__menu-item-sub-menu">
+                    <a href="#" class="a-nav__menu-item-link">LINK 2 GHJ GHJ GH JG HJG HJ GHJ </a>
+                    <a href="#" class="a-nav__menu-item-link">LINK 2</a>
+                    <a href="#" class="a-nav__menu-item-link">LINK 2</a>
+                    <a href="#" class="a-nav__menu-item-link">LINK 2</a>
+                    <a href="#" class="a-nav__menu-item-link">LINK 2</a>
+                    <a href="#" class="a-nav__menu-item-link">LINK 2</a>
+                </span>
+            </li>
+            <li class="a-nav__menu-item-expand">
+                <span class="a-nav__menu-item-text">Expand 3</span>
+                <span class="a-nav__menu-item-sub-menu">
+                    <a href="#" class="a-nav__menu-item-link">SUB LINK 1</a>
+                    <a href="#" class="a-nav__menu-item-link">SUB LINK 1</a>
+                </span>
+            </li>
+        </ul>
+        <button class="a-nav__menu-button">
+            <span class="button_bar-1"></span>
+            <span class="button_bar-2"></span>
+            <span class="button_bar-3"></span>
+        </button>
+    </div>
+
+    <!--<div class="container">
+        <h1>Buttons</h1>
+        <hr style="margin-bottom: 1rem;">
+        <button class="a-btn">Default</button>
+        <button class="a-btn a-btn--primary">Primary</button>
+        <button class="a-btn a-btn--secondary">Secondary</button>
+        <button class="a-btn a-btn--dark">Dark</button>
+        <button class="a-btn a-btn--guava">Guava</button>
+        <button class="a-btn a-btn--apple">Apple</button>
+        <button class="a-btn a-btn--mango">Mango</button>
+
+        <br/> <br/>
+        <h2>Big</h2>
+        <hr style="margin-bottom: 1rem;">
+        <button class="a-btn a-btn--big">Default</button>
+        <button class="a-btn a-btn--primary a-btn--big">Primary</button>
+        <button class="a-btn a-btn--secondary a-btn--big">Secondary</button>
+        <button class="a-btn a-btn--dark a-btn--big">Dark</button>
+        <button class="a-btn a-btn--guava a-btn--big">Guava</button>
+        <button class="a-btn a-btn--apple a-btn--big">Apple</button>
+        <button class="a-btn a-btn--mango a-btn--big">Mango</button>
+
+        <br/> <br/>
+        <h2>Block</h2>
+        <hr style="margin-bottom: 1rem;">
+        <button class="a-btn a-btn--block">Default</button><br/>
+        <button class="a-btn a-btn--primary  a-btn--block">Primary</button><br/>
+        <button class="a-btn a-btn--secondary a-btn--block">Secondary</button><br/>
+        <button class="a-btn a-btn--dark a-btn--block">Dark</button><br/>
+        <button class="a-btn a-btn--guava a-btn--block">Guava</button><br/>
+        <button class="a-btn a-btn--apple a-btn--block">Apple</button><br/>
+        <button class="a-btn a-btn--mango a-btn--block">Mango</button><br/>
+
+        <br/> <br/>
+        <h2>Block Big</h2>
+        <hr style="margin-bottom: 1rem;">
+        <button class="a-btn a-btn--big a-btn--block">Default</button><br/>
+        <button class="a-btn a-btn--primary a-btn--big a-btn--block">Primary</button><br/>
+        <button class="a-btn a-btn--secondary a-btn--big a-btn--block">Secondary</button><br/>
+        <button class="a-btn a-btn--dark a-btn--big a-btn--block">Dark</button><br/>
+        <button class="a-btn a-btn--guava a-btn--big a-btn--block">Guava</button><br/>
+        <button class="a-btn a-btn--apple a-btn--big a-btn--block">Apple</button><br/>
+        <button class="a-btn a-btn--mango a-btn--big a-btn--block">Mango</button><br/>
+    </div>-->
+
+
+    <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+
+    <script src="js/atdc.js"></script>
+
+    <script>
+        $("#themeSwitch").on("click", function(){
+            $("body").toggleClass("--theme-dark");
+        });
+
+        let testAlert = new AlertMaster("notification");
+
+        $(".btntest").on("click", function(){
+            let state = $(this).text();
+            testAlert.fire({
+                title: "Alert Test",
+                message: "Sample Message"
+            },state);
+        });
+    </script>
+</body>
+</html>
