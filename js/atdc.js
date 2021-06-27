@@ -48,6 +48,15 @@ $(document).on("click", ".a-nav__menu-button", function(e){
 
 
 
+
+
+
+
+
+
+
+
+
 //a-alert start
 class AlertMaster{
     alertType;
@@ -171,8 +180,25 @@ $(document).on("change", ".a-alert", function(){
 
 $(document).on("click", ".a-alert__close-btn", function(){
     let alert = $(this).parent().parent();
-    alert.remove();
+    $(alert).css("height", $(alert).height());
+        $(alert).find(".a-alert__body").css("width", $(alert).width());
+        $(alert).animate({
+            width: 0,
+            opacity: 0
+        }, "slow", function(){
+            $(this).remove();
+        });
 });
 
 
 //a-alert end
+
+
+
+
+
+
+
+
+
+

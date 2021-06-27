@@ -303,6 +303,20 @@ a{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //a-btn start
 %a-btn-default{
     border-radius: .5rem;
@@ -312,19 +326,20 @@ a{
     border: none;
     min-width: 6rem;
     cursor: pointer;
-}
-
-%a-btn-default:focus{
-    background-color: #e4e4e4;
-    box-shadow: rgba(#efefef, .25) 0px 1px 4px, rgb(#efefef, .25) 0px 0px 0px 3px;
+    background-color: map-get(var.$themes, "light", "element", "highlight-15" );
 }
 
 %a-btn-default:hover{
-    background-color:  #f1f1f1;
+    background-color: map-get(var.$themes, "light", "element", "highlight-10");
+}
+
+%a-btn-default:focus{
+    background-color: map-get(var.$themes, "light", "element", "highlight-20" );
+    box-shadow: rgba(#efefef, .25) 0px 1px 4px, rgb(#efefef, .25) 0px 0px 0px 3px;
 }
 
 %a-btn-default:disabled{
-    background-color:  #f1f1f1;
+    background-color: map-get(var.$themes, "light", "element", "highlight-10");
     cursor: no-drop;
 }
 
@@ -338,6 +353,17 @@ a{
 
 
 //mofiers
+
+.a-btn--big{
+    height: 3rem;
+    font-size: 1.2rem;
+}
+
+.a-btn--block{
+    display: block;
+    width: 100%;
+}
+
 @each $color, $key in var.$colors{
     .a-btn--#{$color}{
         background-color: map-get($key, "hue");
@@ -354,22 +380,68 @@ a{
     }
     .a-btn--#{$color}:disabled{
         background-color:map-get($key, "die");
+        color: rgba(white,.25);
     }
     .a-btn--#{$color}.active{
         background-color:map-get($key, "shade");
     }
 }
 
-.a-btn--big{
-    height: 3rem;
-    font-size: 1.2rem;
+
+//theme dark
+.--theme-dark %a-btn-default{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-15" );
+    color: inherit;
 }
 
-.a-btn--block{
-    display: block;
-    width: 100%;
+.--theme-dark %a-btn-default:hover{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-10");
+}
+
+.--theme-dark %a-btn-default:focus{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-20" );
+}
+
+.--theme-dark %a-btn-default:disabled{
+    background-color: map-get(var.$themes, "dark", "element", "highlight-10");
+    cursor: no-drop;
+}
+
+@each $color, $key in var.$colors{
+    .--theme-dark .a-btn--#{$color}{
+        background-color: map-get($key, "hue");
+        color: white;
+    }
+
+    .--theme-dark .a-btn--#{$color}:hover{
+        background-color: map-get($key, "tint");
+    }
+
+    .--theme-dark .a-btn--#{$color}:focus{
+        background-color:map-get($key, "tone");
+        box-shadow: rgba(map-get($key, "hue"), .25) 0px 1px 4px, rgb(map-get($key, "hue"), .25) 0px 0px 0px 3px;
+    }
+    .--theme-dark .a-btn--#{$color}:disabled{
+        background-color:map-get($key, "die");
+        color: rgba(white,.25);
+    }
+    .--theme-dark .a-btn--#{$color}.active{
+        background-color:map-get($key, "shade");
+    }
 }
 //a-btn end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

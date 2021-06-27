@@ -350,24 +350,35 @@ a {
   border: none;
   min-width: 6rem;
   cursor: pointer;
-}
-
-.a-btn:focus {
-  background-color: #e4e4e4;
-  box-shadow: rgba(239, 239, 239, 0.25) 0px 1px 4px, rgba(239, 239, 239, 0.25) 0px 0px 0px 3px;
+  background-color: #d1d7e5;
 }
 
 .a-btn:hover {
-  background-color: #f1f1f1;
+  background-color: #dde1ec;
+}
+
+.a-btn:focus {
+  background-color: #b9c3d8;
+  box-shadow: rgba(239, 239, 239, 0.25) 0px 1px 4px, rgba(239, 239, 239, 0.25) 0px 0px 0px 3px;
 }
 
 .a-btn:disabled {
-  background-color: #f1f1f1;
+  background-color: #dde1ec;
   cursor: no-drop;
 }
 
 .active.a-btn {
   background-color: #d7d7d7;
+}
+
+.a-btn--big {
+  height: 3rem;
+  font-size: 1.2rem;
+}
+
+.a-btn--block {
+  display: block;
+  width: 100%;
 }
 
 .a-btn--primary {
@@ -386,6 +397,7 @@ a {
 
 .a-btn--primary:disabled {
   background-color: #5b8ffb;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .a-btn--primary.active {
@@ -408,6 +420,7 @@ a {
 
 .a-btn--secondary:disabled {
   background-color: #6e7085;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .a-btn--secondary.active {
@@ -429,7 +442,8 @@ a {
 }
 
 .a-btn--dark:disabled {
-  background-color: #4c4f53;
+  background-color: #747474;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .a-btn--dark.active {
@@ -451,7 +465,8 @@ a {
 }
 
 .a-btn--guava:disabled {
-  background-color: #2bcb85;
+  background-color: #54d19b;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .a-btn--guava.active {
@@ -473,7 +488,8 @@ a {
 }
 
 .a-btn--apple:disabled {
-  background-color: #ff5858;
+  background-color: #ff8282;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .a-btn--apple.active {
@@ -495,21 +511,168 @@ a {
 }
 
 .a-btn--mango:disabled {
-  background-color: #ffb836;
+  background-color: #ffcb6a;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .a-btn--mango.active {
   background-color: #e59a11;
 }
 
-.a-btn--big {
-  height: 3rem;
-  font-size: 1.2rem;
+.--theme-dark .a-btn {
+  background-color: #4b4f54;
+  color: inherit;
 }
 
-.a-btn--block {
-  display: block;
-  width: 100%;
+.--theme-dark .a-btn:hover {
+  background-color: #42454a;
+}
+
+.--theme-dark .a-btn:focus {
+  background-color: #56595e;
+}
+
+.--theme-dark .a-btn:disabled {
+  background-color: #42454a;
+  cursor: no-drop;
+}
+
+.--theme-dark .a-btn--primary {
+  background-color: #3e7bfa;
+  color: white;
+}
+
+.--theme-dark .a-btn--primary:hover {
+  background-color: #5288fb;
+}
+
+.--theme-dark .a-btn--primary:focus {
+  background-color: #457cee;
+  box-shadow: rgba(62, 123, 250, 0.25) 0px 1px 4px, rgba(62, 123, 250, 0.25) 0px 0px 0px 3px;
+}
+
+.--theme-dark .a-btn--primary:disabled {
+  background-color: #5b8ffb;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.--theme-dark .a-btn--primary.active {
+  background-color: #386ee1;
+}
+
+.--theme-dark .a-btn--secondary {
+  background-color: #555770;
+  color: white;
+}
+
+.--theme-dark .a-btn--secondary:hover {
+  background-color: #66687f;
+}
+
+.--theme-dark .a-btn--secondary:focus {
+  background-color: #595b72;
+  box-shadow: rgba(85, 87, 112, 0.25) 0px 1px 4px, rgba(85, 87, 112, 0.25) 0px 0px 0px 3px;
+}
+
+.--theme-dark .a-btn--secondary:disabled {
+  background-color: #6e7085;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.--theme-dark .a-btn--secondary.active {
+  background-color: #4c4e65;
+}
+
+.--theme-dark .a-btn--dark {
+  background-color: #2d3035;
+  color: white;
+}
+
+.--theme-dark .a-btn--dark:hover {
+  background-color: #42454a;
+}
+
+.--theme-dark .a-btn--dark:focus {
+  background-color: #35383d;
+  box-shadow: rgba(45, 48, 53, 0.25) 0px 1px 4px, rgba(45, 48, 53, 0.25) 0px 0px 0px 3px;
+}
+
+.--theme-dark .a-btn--dark:disabled {
+  background-color: #747474;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.--theme-dark .a-btn--dark.active {
+  background-color: #282b30;
+}
+
+.--theme-dark .a-btn--guava {
+  background-color: #06c270;
+  color: white;
+}
+
+.--theme-dark .a-btn--guava:hover {
+  background-color: #1fc87f;
+}
+
+.--theme-dark .a-btn--guava:focus {
+  background-color: #12bb72;
+  box-shadow: rgba(6, 194, 112, 0.25) 0px 1px 4px, rgba(6, 194, 112, 0.25) 0px 0px 0px 3px;
+}
+
+.--theme-dark .a-btn--guava:disabled {
+  background-color: #54d19b;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.--theme-dark .a-btn--guava.active {
+  background-color: #05ae65;
+}
+
+.--theme-dark .a-btn--apple {
+  background-color: #ff3b3b;
+  color: white;
+}
+
+.--theme-dark .a-btn--apple:hover {
+  background-color: #ff4f4f;
+}
+
+.--theme-dark .a-btn--apple:focus {
+  background-color: #f24242;
+  box-shadow: rgba(255, 59, 59, 0.25) 0px 1px 4px, rgba(255, 59, 59, 0.25) 0px 0px 0px 3px;
+}
+
+.--theme-dark .a-btn--apple:disabled {
+  background-color: #ff8282;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.--theme-dark .a-btn--apple.active {
+  background-color: #e53535;
+}
+
+.--theme-dark .a-btn--mango {
+  background-color: #ffac13;
+  color: white;
+}
+
+.--theme-dark .a-btn--mango:hover {
+  background-color: #ffb42b;
+}
+
+.--theme-dark .a-btn--mango:focus {
+  background-color: #f2a81e;
+  box-shadow: rgba(255, 172, 19, 0.25) 0px 1px 4px, rgba(255, 172, 19, 0.25) 0px 0px 0px 3px;
+}
+
+.--theme-dark .a-btn--mango:disabled {
+  background-color: #ffcb6a;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.--theme-dark .a-btn--mango.active {
+  background-color: #e59a11;
 }
 
 .a-alert-container {

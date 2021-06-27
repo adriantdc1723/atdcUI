@@ -55,10 +55,11 @@
     <button id="themeSwitch" class="a-btn a-btn--dark a-btn--big">Switch theme</button>
 
     <div style="margin-top: 100px;">
-        <button class="btntest a-btn a-btn--dark" >default</button>
-        <button class="btntest a-btn a-btn--guava" ">success</button>
-        <button class="btntest a-btn a-btn--apple" ">danger</button>
-        <button class="btntest a-btn a-btn--mango" ">warning</button>
+        <button class="btntest a-btn">default</button>
+        <button class="btntest a-btn a-btn--dark">default</button>
+        <button class="btntest a-btn a-btn--guava">success</button>
+        <button class="btntest a-btn a-btn--apple">danger</button>
+        <button class="btntest a-btn a-btn--mango">warning</button>
     </div>
 
     <div class="a-nav a-nav--collapse-md">
@@ -163,9 +164,11 @@
 
         $(".btntest").on("click", function(){
             let state = $(this).text();
+
+            let sampleAlert = "<div style='box-sizing: border-box; padding:.5rem; text-align:center'><button class='a-btn a-btn--apple' style='margin:.5rem;'>Confirm</button><button class='a-btn'>Cancel</button></div>";
             testAlert.fire({
-                title: "Alert Test",
-                message: "Sample Message"
+                title: "Are you sure?",
+                message: "You are about to delete an item"+sampleAlert
             },state);
         });
     </script>
