@@ -133,7 +133,7 @@ class AlertMaster{
         //if AlertMaster type alert and remove emmediately
         alert_container.find(".a-alert").each(function(){
             let type = $(this).attr("data-alert-type");
-            if(type=="alert"){
+            if(type=="alert" || type=="post"){
                 $(this).remove();
             }
         });
@@ -166,19 +166,17 @@ class AlertMaster{
         $("#"+this.alertHistoryId).find(".a-alert__body-buttons button").each(function(){
             let alertparent = $(this).parent().parent().parent();
             $(this).on("click", function(){
-                alertparent.animate({
-                    opacity:0
-                },"fast").remove();
+                alertparent.remove();
             });
         });
         if(callback){
-            if(callback && {}.toString.call(callback)==="[object Function]"){
+            if(typeof callback == "function"){
                 $("#"+this.alertHistoryId).find(".a-alert__body-extra-button").on("click", function(){
                     callback();
                 });
-             }else{
-                throw "addButton second argument must be a function!";
-             }
+            }else{
+                throw "'"+callback+"' is not a function. addButton second parameter must be a function.";
+            }
         }
     }//addbutton method end
 

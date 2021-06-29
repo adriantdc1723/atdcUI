@@ -163,7 +163,7 @@
 
         let testAlert = new AlertMaster("post");
 
-        $(".btntest").on("click", function(){
+        $(".btntest").on("click", function(e){
             let thisBtn = $(this);
             let state = $(this).text();
 
@@ -171,9 +171,14 @@
             testAlert.fire({
                 title: "Bullfrag",
                 message: "You are about to delete an item"
-            },state)
-            .addButton("Confirm", ()=>{
-                this.remove();
+            })
+            .addButton("Confirm", function(){
+                e.target.remove();
+                let newalert  = new AlertMaster("alert");
+                newalert.fire({
+                    title: "Success!",
+                    message: "You have successfully deleted an item."
+                },"success");
             });
         });
 

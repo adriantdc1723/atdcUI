@@ -585,6 +585,11 @@ a{
     border-left: .5rem solid map-get(var.$colors, "mango", "hue");
 }
 
+@media screen and (max-width: map-get(var.$breakpoints, "sm")){
+    .a-alert-container{
+        width: 100%; top: 0; bottom: unset;
+    }
+}
 
 
 //a-alert end

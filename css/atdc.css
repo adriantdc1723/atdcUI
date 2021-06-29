@@ -153,7 +153,7 @@ a {
   background-color: #e7ebf2;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 992pxpx) {
   .a-nav--collapse-lg .a-nav__menu {
     position: fixed;
     top: 3.5rem;
@@ -208,7 +208,7 @@ a {
     background-color: #373b40;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768pxpx) {
   .a-nav--collapse-md .a-nav__menu {
     position: fixed;
     top: 3.5rem;
@@ -263,7 +263,7 @@ a {
     background-color: #373b40;
   }
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 576pxpx) {
   .a-nav--collapse-sm .a-nav__menu {
     position: fixed;
     top: 3.5rem;
@@ -796,6 +796,14 @@ a {
 
 .--theme-dark .a-alert--warning {
   border-left: 0.5rem solid #ffac13;
+}
+
+@media screen and (max-width: 576px) {
+  .a-alert-container {
+    width: 100%;
+    top: 0;
+    bottom: unset;
+  }
 }
 
 /*# sourceMappingURL=atdc.css.map */
