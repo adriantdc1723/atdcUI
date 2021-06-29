@@ -60,19 +60,19 @@ $(document).on("click", ".a-nav__menu-button", function(e){
 //a-alert start
 class AlertMaster{
     alertType;
-    //alertHistoryId;
+    alertHistoryId;
+    alertHistoryState;
 
     constructor(type){
-        if(type!="alert" && type!="notification"){
-            throw "Invalid AlertMaster(type) Type\n Type must be:\n\talert\n\tnotification\n\tpost";
+        if(type=="alert" || type=="notification" || type=="post" || !type){
+            if(!type){
+                this.alertType = "alert";
+            }else{
+                this.alertType = type;
+            }
         }else{
-            this.alertType = type;
+            throw "Invalid AlertMaster(type) Type:'"+type+"'\n Type must be:\n\talert\n\tnotification\n\tpost";
         }
-        /*if(type=="notification"){
-            this.alertType = "notification";
-        }else{
-            this.alertType = "alert";
-        }*/
     }
 
     fire({title, message}, state){
@@ -103,6 +103,7 @@ class AlertMaster{
         }
 
 
+        //private property
         let random_string = ()=>{
             let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             let output = "";
@@ -111,11 +112,13 @@ class AlertMaster{
             }
             return output;
         }
+      
         
         let randomString = random_string();
         let alert_id = "aAlert_"+randomString;
 
-       //this.alertHistoryId = alert_id;
+        this.alertHistoryId = alert_id;
+        this.alertHistoryState = state;
 
         let a_alert_title = "<span class='a-alert__title'>"+title+"</span>";
         let a_alert_message = "<span class='a-alert__message'>"+message+"</span>";
@@ -141,14 +144,50 @@ class AlertMaster{
 
         $("#"+alert_id).animate({
             opacity:1},"fast").trigger("change");
-
+        return this;
     }//fire method end
+
+    addButton(name, callback){
+        let btnClass = "primary";
+       
+        if(this.alertHistoryState=="success"){
+            btnClass = "guava";
+        }else if(this.alertHistoryState=="warning"){
+            btnClass = "mango";
+        }else if(this.alertHistoryState=="danger"){
+            btnClass = "apple";
+        }
+
+        let buttons = "<div class='a-alert__body-buttons'>"+
+                    "<button class='a-btn a-btn--"+btnClass+" a-btn--block a-alert__body-extra-button' style='margin-top:.5rem; margin-bottom:.5rem'>"+name+"</button>"+
+                     "<button class='a-btn a-btn--block a-alert__body-close-button' style='margin-top:.5rem; margin-bottom:.5rem'>Cancel</button>"+
+                     "</div>";
+        $("#"+this.alertHistoryId).find(".a-alert__body").append(buttons);
+        $("#"+this.alertHistoryId).find(".a-alert__body-buttons button").each(function(){
+            let alertparent = $(this).parent().parent().parent();
+            $(this).on("click", function(){
+                alertparent.animate({
+                    opacity:0
+                },"fast").remove();
+            });
+        });
+        if(callback){
+            if(callback && {}.toString.call(callback)==="[object Function]"){
+                $("#"+this.alertHistoryId).find(".a-alert__body-extra-button").on("click", function(){
+                    callback();
+                });
+             }else{
+                throw "addButton second argument must be a function!";
+             }
+        }
+    }//addbutton method end
 
 }
 
 $(document).on("change", ".a-alert", function(){
     let alertId = $(this).attr("id");
     let timeOutName = "timeout_"+alertId;
+    let data_alert_type = $(this).attr("data-alert-type");
 
     //create function remove alert
     let removeAlert = selector => {
@@ -163,17 +202,22 @@ $(document).on("change", ".a-alert", function(){
     }
 
 
-    //assign variable timeOutName value as new Variable name
-    let thisAlertTimeout = setTimeout(removeAlert, 10000, "#"+alertId);//10sec orig
+    
 
-    //bind event
-    $(this).on("mouseover", function(){
-        clearTimeout(thisAlertTimeout);
-    });
+    if(data_alert_type!="post"){//if alertMaster is "alert" or "notification" bind functions
 
-    $(this).on("mouseleave", function(){
-        thisAlertTimeout = setTimeout(removeAlert, 8000, "#"+alertId);//8sec orig
-    });
+        //assign variable timeOutName value as new Variable name
+        let thisAlertTimeout = setTimeout(removeAlert, 10000, "#"+alertId);//10sec orig
+
+        //bind events mouseover and mouseleave
+        $(this).on("mouseover", function(){
+            clearTimeout(thisAlertTimeout);
+        });
+
+        $(this).on("mouseleave", function(){
+            thisAlertTimeout = setTimeout(removeAlert, 8000, "#"+alertId);//8sec orig
+        });
+    }
 
 });
 

@@ -60,6 +60,7 @@
         <button class="btntest a-btn a-btn--guava">success</button>
         <button class="btntest a-btn a-btn--apple">danger</button>
         <button class="btntest a-btn a-btn--mango">warning</button>
+        <button class="btntest2 a-btn a-btn--mango">Unknown</button>
     </div>
 
     <div class="a-nav a-nav--collapse-md">
@@ -160,17 +161,23 @@
             $("body").toggleClass("--theme-dark");
         });
 
-        let testAlert = new AlertMaster("alert");
+        let testAlert = new AlertMaster("post");
 
         $(".btntest").on("click", function(){
+            let thisBtn = $(this);
             let state = $(this).text();
 
            
             testAlert.fire({
                 title: "Bullfrag",
                 message: "You are about to delete an item"
-            },state);
+            },state)
+            .addButton("Confirm", ()=>{
+                this.remove();
+            });
         });
+
+
     </script>
 </body>
 </html>
