@@ -63,11 +63,16 @@ class AlertMaster{
     //alertHistoryId;
 
     constructor(type){
-        if(type=="notification"){
+        if(type!="alert" && type!="notification"){
+            throw "Invalid AlertMaster(type) Type\n Type must be:\n\talert\n\tnotification\n\tpost";
+        }else{
+            this.alertType = type;
+        }
+        /*if(type=="notification"){
             this.alertType = "notification";
         }else{
             this.alertType = "alert";
-        }
+        }*/
     }
 
     fire({title, message}, state){
@@ -126,14 +131,7 @@ class AlertMaster{
         alert_container.find(".a-alert").each(function(){
             let type = $(this).attr("data-alert-type");
             if(type=="alert"){
-                $(this).css("height", $(this).height());
-                $(this).find(".a-alert__body").css("width", $(this).width());
-                $(this).animate({
-                    width: 0,
-                    opacity: 0
-                }, 500, function(){
-                    $(this).remove();
-                });
+                $(this).remove();
             }
         });
 
@@ -141,7 +139,8 @@ class AlertMaster{
          $(document).find(".a-alert-container").append(a_alert);
       
 
-        $("#"+alert_id).trigger("change");
+        $("#"+alert_id).animate({
+            opacity:1},"fast").trigger("change");
 
     }//fire method end
 

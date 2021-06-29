@@ -471,6 +471,7 @@ a{
     border-left: .5rem solid map-get(var.$themes, "light", "element", "highlight-20");
     box-sizing: border-box; box-shadow: var.$shadows-2;
     margin: .5rem 0;
+    opacity: 0;
 }
 
 .a-alert__header{

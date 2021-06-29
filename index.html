@@ -160,15 +160,15 @@
             $("body").toggleClass("--theme-dark");
         });
 
-        let testAlert = new AlertMaster("notification");
+        let testAlert = new AlertMaster("alert");
 
         $(".btntest").on("click", function(){
             let state = $(this).text();
 
-            let sampleAlert = "<div style='box-sizing: border-box; padding:.5rem; text-align:center'><button class='a-btn a-btn--apple' style='margin:.5rem;'>Confirm</button><button class='a-btn'>Cancel</button></div>";
+           
             testAlert.fire({
-                title: "Are you sure?",
-                message: "You are about to delete an item"+sampleAlert
+                title: "Bullfrag",
+                message: "You are about to delete an item"
             },state);
         });
     </script>
