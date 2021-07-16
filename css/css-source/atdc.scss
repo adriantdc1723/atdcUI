@@ -202,7 +202,7 @@ a{
  
 @each $breakpoint, $width in var.$breakpoints{
 
-    @media screen and (max-width: #{$width}px){
+    @media screen and (max-width: #{$width}){
 
         .a-nav--collapse-#{$breakpoint} .a-nav__menu{
             position: fixed; top:3.5rem; right: -300px; bottom: 0;
@@ -472,6 +472,7 @@ a{
     box-sizing: border-box; box-shadow: var.$shadows-2;
     margin: .5rem 0;
     opacity: 0;
+    overflow: hidden;
 }
 
 .a-alert__header{

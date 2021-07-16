@@ -153,7 +153,7 @@ a {
   background-color: #e7ebf2;
 }
 
-@media screen and (max-width: 992pxpx) {
+@media screen and (max-width: 992px) {
   .a-nav--collapse-lg .a-nav__menu {
     position: fixed;
     top: 3.5rem;
@@ -208,7 +208,7 @@ a {
     background-color: #373b40;
   }
 }
-@media screen and (max-width: 768pxpx) {
+@media screen and (max-width: 768px) {
   .a-nav--collapse-md .a-nav__menu {
     position: fixed;
     top: 3.5rem;
@@ -263,7 +263,7 @@ a {
     background-color: #373b40;
   }
 }
-@media screen and (max-width: 576pxpx) {
+@media screen and (max-width: 576px) {
   .a-nav--collapse-sm .a-nav__menu {
     position: fixed;
     top: 3.5rem;
@@ -694,6 +694,7 @@ a {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   margin: 0.5rem 0;
   opacity: 0;
+  overflow: hidden;
 }
 
 .a-alert__header {
